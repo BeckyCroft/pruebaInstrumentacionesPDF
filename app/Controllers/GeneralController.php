@@ -68,7 +68,7 @@ class GeneralController extends \App\Controllers\BaseController
         header('Content-Disposition: inline; filename="document.pdf"');
         header('Content-Transfer-Encoding: binary');
 
-        $dompdf->stream($instrumentacion->descripcion_periodo . "_" . $instrumentacion->clave_asignatura . "_" . $instrumentacion->nombre_asignatura . "_" . $instrumentacion->nombre_area . "_" . $instrumentacion->semestre . "_" . $instrumentacion->grupo . "_" . $instrumentacion->nombre_funcionario . "-" . $instrumentacion->apaterno_funcionario . "-" . $instrumentacion->amaterno_funcionario . ".pdf", array("Attachment" => 0));
+        $dompdf->stream($instrumentacion->periodo . "_" . $instrumentacion->clave_asignatura . "_" . $instrumentacion->nombre_asignatura . "_" . $instrumentacion->nombre_area . "_" . $instrumentacion->semestre . "_" . $instrumentacion->grupo . "_" . $instrumentacion->nombre_funcionario . "-" . $instrumentacion->apaterno_funcionario . "-" . $instrumentacion->amaterno_funcionario . ".pdf", array("Attachment" => 0));
         exit();
 
         return redirect("pdf");

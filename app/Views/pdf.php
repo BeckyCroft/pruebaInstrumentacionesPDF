@@ -25,7 +25,21 @@ use PhpParser\Node\Stmt\Foreach_;
     <br>
     <div align="center">
         <div>
-            <p>Periodo: <?= $instrumentacion->fecha_inicio_periodo ?> - <?= $instrumentacion->fecha_fin_periodo ?> <?= $instrumentacion->descripcion_periodo ?></p>
+            <?php
+            $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+            $fecha_inicio_periodo = strtotime($instrumentacion->fecha_inicio_periodo);
+            $inicio = date('Y-m-d', $fecha_inicio_periodo);
+            $mes_inicio =  $meses[date('n', $fecha_inicio_periodo) - 1];
+
+            $fecha_fin_periodo = strtotime($instrumentacion->fecha_fin_periodo);
+            $fin = date('Y-m-d', $fecha_fin_periodo);
+            $mes_fin = $meses[date('n', $fecha_fin_periodo) - 1];
+
+            $anio = date("Y", $fecha_fin_periodo);
+
+            ?>
+            <p>Periodo: <?= $mes_inicio ?> - <?= $mes_fin ?> <?= $anio ?></p>
             <p>Asignatura: <?= $instrumentacion->nombre_asignatura ?></p>
             <p>Plan de estudios: <?= $instrumentacion->plan_estudios ?></p>
             <p>Clave de la asignatura: <?= $instrumentacion->clave_asignatura ?></p>
@@ -183,7 +197,7 @@ use PhpParser\Node\Stmt\Foreach_;
             <p>Nombre y Firma del Docente</p>
         </div>
         <div class="right">
-            <p>Prospecto de Ingeniero: Paulina</p>
+            <p>Prospecto de Ingeniero: <?= $instrumentacion->supervisor ?></p>
             <p>Vo. Bo. Jefe del Departamento</p>
         </div>
     </div>
