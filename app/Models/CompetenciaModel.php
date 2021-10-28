@@ -12,11 +12,12 @@ class CompetenciaModel extends Model
     protected $returnType   = 'object';
     protected $table = 'competencia';
 
-    public function getCompetencias()
+    public function getCompetenciaPorFolio($folio_instrumentacion)
     {
         return $this->db->table("competencia")
             ->select("*")
-            ->get()->getResult();
+            ->where('folio_instrumentacion', $folio_instrumentacion)
+            ->get()->getRow();
     }
 
     /* SELECT * FROM nivel_desempenio nd

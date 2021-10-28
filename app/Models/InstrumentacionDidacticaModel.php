@@ -30,12 +30,12 @@ class InstrumentacionDidacticaModel extends Model
     public function getInstrumentacion()
     {
         return $this->db->table("instrumentacion_didactica i")
-        ->select("*")
-        ->join('estatus_instrumentacion e', 'e.id_estatus_instrumentacion = i.id_estatus_instrumentacion')
-        ->join('asignatura a', 'a.clave_asignatura=i.clave_asignatura')
-        ->join('periodo p', 'p.periodo=a.periodo')
-        ->join('area ar', 'ar.id_area =a.id_area')
-        ->join('funcionario f', 'f.rfc_funcionario= i.usuario')
-        ->get()->getResult();
+            ->select("*")
+            ->join('estatus_instrumentacion e', 'e.id_estatus_instrumentacion = i.id_estatus_instrumentacion')
+            ->join('asignatura a', 'a.clave_asignatura=i.clave_asignatura')
+            ->join('periodo p', 'p.periodo=a.periodo')
+            ->join('area ar', 'ar.id_area =a.id_area')
+            ->join('funcionario f', 'f.rfc_funcionario= i.usuario')
+            ->get()->getRow();
     }
 }
